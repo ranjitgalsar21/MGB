@@ -1,8 +1,8 @@
 {
   "cloud": {
     "type": "static",
-    "outputDirectory": "mgb",
     "framework": "vite",
-    "buildCommand": ""
+    "outputDirectory": "mgb",
+    "buildCommand": "vite build"
   }
 }
