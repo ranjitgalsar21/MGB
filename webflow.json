@@ -2,6 +2,7 @@
   "cloud": {
     "type": "static",
     "outputDirectory": "mgb",
+    "framework": "none",
     "buildCommand": ""
   }
 }
