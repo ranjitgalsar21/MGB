@@ -1,4 +1,20 @@
-body{
-    display: none;
-    
+.blog-card-main:first-child:has([data-wf--insight-card--variant="featured"]) {
+    grid-column: span 3;
 }
+  .splide__arrow {
+    background-color: #fff !important;
+    width: 4em !important;
+    height: 4em !important;
+}
+  .splide__arrow--next {
+    right: 1.8em;
+}
+.splide__arrow--prev {
+    left: 1.8em;
+}
+  .splide__pagination {
+    bottom: 4em;
+}
+  .splide__pagination__page {
+    background: #1212125e;
+    }
