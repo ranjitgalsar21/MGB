@@ -1,7 +1,7 @@
 {
   "cloud": {
     "type": "static",
-    "outputDirectory": ".",
+    "outputDirectory": "mgb",
     "buildCommand": ""
   }
 }
