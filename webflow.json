@@ -1,5 +1,7 @@
 {
-  "type": "static",
-  "buildCommand": "",
-  "outputDirectory": "."
+  "cloud": {
+    "type": "static",
+    "outputDirectory": ".",
+    "buildCommand": ""
+  }
 }
