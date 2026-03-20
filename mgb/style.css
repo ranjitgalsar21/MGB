@@ -58,6 +58,29 @@
 .splide{
     visibility: visible;
 }
+.navbar .nav-wrap{
+    transition:all .7s cubic-bezier(.645, .045, .355, 1);
+        position: relative;
+    z-index: 1;
+    background: #fff;
+}
+.is-scrolled .navbar .nav-wrap{
+        border-radius: 1.6em;
+    box-shadow: 0px 0px 2px #8e8e8e;
+    transform: translateY(1em);
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+}
+.navbar .header-btn,.navbar .logo{
+    transition:all .7s cubic-bezier(.645, .045, .355, 1);
+}
+.is-scrolled .navbar .header-btn{
+    transform: translateX(-2em);
+}
+.is-scrolled .navbar .logo{
+    transform: translateX(2em);
+}
     @media screen and (max-width:767px) {
         .splide_mobile .splide__pagination,.services__cards-wrap .splide__pagination {
     bottom: 2em;

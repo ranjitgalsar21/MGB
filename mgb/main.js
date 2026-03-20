@@ -73,10 +73,37 @@ function burgerMenu(){
     body.classList.remove('no-scroll');
   });
 }
+function locomotiveScroll(){
+         window.locomotiveScroll = new LocomotiveScroll({
+    lenisOptions: {
+        wrapper: window,
+        content: document.documentElement,
+        lerp: 0.1,
+        duration: 0.8,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        smoothTouch: false,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        normalizeWheel: true,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    },
+});
+window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY;
+        if (scrollTop > 100) {
+          document.body.classList.add('is-scrolled');
+        } else {
+          document.body.classList.remove('is-scrolled');
+        }
+      });
+}
   function onLoad(){
     splideSlider();
     splideSliderMobile();
     accordion();
     burgerMenu();
+    locomotiveScroll();
   }
 document.addEventListener('DOMContentLoaded', onLoad);
