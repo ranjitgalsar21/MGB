@@ -391,8 +391,12 @@ const swup = new Swup({
   linkSelector: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup]),a[data-ms-code-lang-select]',
   animateHistoryBrowsing: true,
   cache: true,
-
-  plugins: [new SwupPreloadPlugin()]
+  plugins: [new SwupPreloadPlugin(),new SwupScrollPlugin({
+      doScrollingRightAway: true,
+      animateScroll: false,
+      scrollFriction: 0,
+      scrollAcceleration: 0,
+    })]
 });
 
 function updateActiveLink() {
