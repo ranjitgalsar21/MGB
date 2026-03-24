@@ -416,7 +416,7 @@ function updateActiveLink() {
     cardsAnimation();
     
     videoPopup();
-    updateActiveLink();
+    // updateActiveLink();
     commonFunctions();
   });
   function beforePageChange(){
