@@ -147,7 +147,7 @@ window.addEventListener("scroll", function () {
     });
   }
   function splitText(){
-    const targets = [...document.querySelectorAll("[data-animation='heading']")];
+    const targets = [...document.querySelectorAll("[data-animation='heading'],[data-animation='slider_heading']")];
     targets.forEach(function (el) {
       const split = new SplitText(el, { type: "lines" ,wordsClass: "word",linesClass: "line"});
       split.lines.forEach((line,index) => {
@@ -402,10 +402,10 @@ function updateActiveLink() {
 
   swup.hooks.on("page:view", () => {
     window.scrollTo(0, 0);
-    splitText();
-    initHighlightText();
      setDelays();
     splideSlider();
+    splitText();
+    initHighlightText();
     splideSliderMobile();
     accordion();
     burgerMenu();
