@@ -425,7 +425,9 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-  Webflow.ready();
+   window.Webflow && window.Webflow.destroy();
+  window.Webflow && window.Webflow.ready();
+  window.Webflow && window.Webflow.require('forms').ready();
     
   });
   function beforePageChange(){
