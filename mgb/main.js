@@ -353,7 +353,7 @@ function commonFunctions(){
   })
  })
 
- ScrollTrigger.normalizeScroll();
+ 
 }
 document.fonts.ready.then(() => {
   setTimeout(() => {
@@ -381,6 +381,7 @@ document.fonts.ready.then(() => {
       closeLoader();
       headerToggle();
     }, 2000);
+    ScrollTrigger.normalizeScroll();
   }
 document.addEventListener('DOMContentLoaded', onLoad);
 
@@ -408,6 +409,8 @@ function updateActiveLink() {
 
   swup.hooks.on("page:view", () => {
     window.scrollTo(0, 0);
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  ScrollTrigger.refresh();
      setDelays();
     splideSlider();
     splitText();
@@ -421,6 +424,9 @@ function updateActiveLink() {
     videoPopup();
     // updateActiveLink();
     commonFunctions();
+    footerAnimation();
+  
+    
   });
   function beforePageChange(){
     document.body.classList.remove("is-loaded");
