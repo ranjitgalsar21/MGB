@@ -425,7 +425,7 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-  
+  Webflow.ready();
     
   });
   function beforePageChange(){
@@ -450,10 +450,6 @@ function updateActiveLink() {
   swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
     locomotiveScroll()
-        if (window.FinsweetAttributes) {
-          window.FinsweetAttributes.destroy();
-          window.FinsweetAttributes.modules.list.restart()
-        }
         Webflow.ready();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
