@@ -459,19 +459,24 @@ function updateActiveLink() {
   });
 
   swup.hooks.on('content:replace', () => {
-     window.Webflow && window.Webflow.destroy();
-    
-    // 2. Re-initialize the core
-    window.Webflow && window.Webflow.ready();
-    
-    // 3. SECIFICALLY RE-INIT FORMS (Fixes the URL redirect issue)
-    if (window.Webflow && window.Webflow.require('forms')) {
-        window.Webflow.require('forms').init();
+    // 1. Reset the entire Webflow object
+    if (window.Webflow) {
+        window.Webflow.destroy();
+        window.Webflow.ready();
     }
 
-    // 4. Safe IX2 re-initialization (Preventing the previous 'init' error)
+    // 2. Safe IX2 Re-init (Interactions)
     const ix2 = window.Webflow && window.Webflow.require('ix2');
-    if (ix2) {
+    if (ix2 && typeof ix2.init === 'function') {
         ix2.init();
+    }
+
+    // 3. FORCE FORM BINDING
+    // Webflow forms rely on the 'data-wf-page' ID. 
+    // If this ID doesn't match the new page, Webflow ignores the form.
+    const newPageId = document.documentElement.getAttribute('data-wf-page');
+    if (newPageId) {
+        // Re-trigger the form internal logic
+        window.Webflow && window.Webflow.require('forms') && window.Webflow.require('forms').ready();
     }
 });
