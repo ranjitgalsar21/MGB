@@ -353,7 +353,7 @@ function commonFunctions(){
   })
  })
 
- scrollTrigger.normalizeScroll();
+ ScrollTrigger.normalizeScroll();
 }
 document.fonts.ready.then(() => {
   setTimeout(() => {
