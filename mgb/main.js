@@ -459,11 +459,17 @@ function updateActiveLink() {
   });
 
   swup.hooks.on('content:replace', () => {
-    // Standard re-initialization
-    window.Webflow && window.Webflow.destroy();
+     window.Webflow && window.Webflow.destroy();
+    
+    // 2. Re-initialize the core
     window.Webflow && window.Webflow.ready();
     
-    // Safer IX2 re-initialization
+    // 3. SECIFICALLY RE-INIT FORMS (Fixes the URL redirect issue)
+    if (window.Webflow && window.Webflow.require('forms')) {
+        window.Webflow.require('forms').init();
+    }
+
+    // 4. Safe IX2 re-initialization (Preventing the previous 'init' error)
     const ix2 = window.Webflow && window.Webflow.require('ix2');
     if (ix2) {
         ix2.init();
