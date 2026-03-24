@@ -92,7 +92,10 @@ function locomotiveScroll(){
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     },
 });
-let lastScrollTop = 0;
+
+}
+function headerToggle(){
+  let lastScrollTop = 0;
 
 window.addEventListener("scroll", function () {
   let scrollTop = window.scrollY;
@@ -374,6 +377,7 @@ document.fonts.ready.then(() => {
     commonFunctions();
     setTimeout(() => {
       closeLoader();
+      headerToggle();
     }, 2000);
   }
 document.addEventListener('DOMContentLoaded', onLoad);
