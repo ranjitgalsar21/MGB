@@ -460,3 +460,27 @@ function updateActiveLink() {
     });
     return true;
   });
+
+  swup.hooks.on('content:replace', () => {
+    if (!window.Webflow) return;
+
+    // Fix page ID (critical)
+    const newPage = document.querySelector('[data-wf-page]');
+    if (newPage) {
+        document.documentElement.setAttribute(
+            'data-wf-page',
+            newPage.getAttribute('data-wf-page')
+        );
+    }
+
+    // Reset Webflow
+    window.Webflow.destroy();
+    window.Webflow.ready();
+
+    // Rebind forms
+    const forms = window.Webflow.require && window.Webflow.require('forms');
+    if (forms) {
+        forms.destroy && forms.destroy();
+        forms.ready();
+    }
+});
