@@ -425,7 +425,14 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-    
+      if (window.Webflow) {
+        window.Webflow.destroy();
+        window.Webflow.ready();
+        
+        // Re-init interactions + forms
+        if (Webflow.require('ix2')) Webflow.require('ix2').init();
+        if (Webflow.require('forms')) Webflow.require('forms');
+    }
   });
   function beforePageChange(){
     document.body.classList.remove("is-loaded");
@@ -459,13 +466,4 @@ function updateActiveLink() {
     return true;
   });
 
-  swup.hooks.on('contentReplaced', () => {
-    if (window.Webflow) {
-        window.Webflow.destroy();
-        window.Webflow.ready();
-        
-        // Re-init interactions + forms
-        if (Webflow.require('ix2')) Webflow.require('ix2').init();
-        if (Webflow.require('forms')) Webflow.require('forms');
-    }
-});
+  
