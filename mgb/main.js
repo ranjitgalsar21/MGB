@@ -402,7 +402,7 @@ function updateActiveLink() {
 
   swup.hooks.on("page:view", () => {
     window.scrollTo(0, 0);
-    // splitText();
+    splitText();
     initHighlightText();
      setDelays();
     splideSlider();
