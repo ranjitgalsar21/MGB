@@ -412,11 +412,9 @@ function updateActiveLink() {
     initHighlightText();
     splideSliderMobile();
     accordion();
-    burgerMenu();
     
     locomotiveScroll();
     numberAnimation();
-    footerAnimation();
     cardsAnimation();
     
     videoPopup();
