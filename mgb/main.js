@@ -407,7 +407,16 @@ function updateActiveLink() {
     });
 }
 
-  swup.hooks.on("page:view", () => {
+  swup.hooks.on("page:view", (x) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(x.to.html, 'text/html');
+    const newPage = doc.querySelector('[data-wf-page]');
+    if (newPage) {
+        document.documentElement.setAttribute(
+            'data-wf-page',
+            newPage.getAttribute('data-wf-page')
+        );
+    }
     window.scrollTo(0, 0);
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   ScrollTrigger.refresh();
@@ -425,7 +434,13 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-  
+    Webflow.ready();
+
+    // Rebind forms
+    const forms = window.Webflow.require && window.Webflow.require('forms');
+    if (forms) {
+        forms.ready();
+    }
     
   });
   function beforePageChange(){
@@ -450,7 +465,6 @@ function updateActiveLink() {
   swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
     locomotiveScroll()
-        Webflow.ready();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
     const videos = document.querySelectorAll("video");
@@ -462,25 +476,6 @@ function updateActiveLink() {
   });
 
   swup.hooks.on('content:replace', (x) => {
-    if (!window.Webflow) return;
-console.log(x)
-    // Fix page ID (critical)
-    const newPage = document.querySelector('[data-wf-page]');
-    if (newPage) {
-        document.documentElement.setAttribute(
-            'data-wf-page',
-            newPage.getAttribute('data-wf-page')
-        );
-    }
-
-    // Reset Webflow
-    window.Webflow.destroy();
-    window.Webflow.ready();
-
-    // Rebind forms
-    const forms = window.Webflow.require && window.Webflow.require('forms');
-    if (forms) {
-        forms.destroy && forms.destroy();
-        forms.ready();
-    }
+    Webflow.destroy();
+    Webflow.ready();
 });

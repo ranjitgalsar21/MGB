@@ -376,6 +376,15 @@ span.numberChars-wrap {
         }
     }
 
+    .comparision-bg.sss {
+    width: 100%;
+    left: 0;
+    border: 1px solid #dadada;
+    height: calc(100% - 8em);
+    top: auto;
+    bottom: 0;
+    background: transparent;
+}
 @media (pointer: fine) {
     [data-wf--button--variant]{
         will-change: background-color;
@@ -455,6 +464,12 @@ span.numberChars-wrap {
     background: #ffcf30;
 }
 .video-play:hover svg{
+    transform: scale(1.1);
+}
+.card img{
+    transition: 0.3s ease;
+}
+.card:hover img{
     transform: scale(1.1);
 }
 }
