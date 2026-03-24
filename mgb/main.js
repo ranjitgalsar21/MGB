@@ -352,6 +352,8 @@ function commonFunctions(){
     }
   })
  })
+
+ scrollTrigger.normalizeScroll();
 }
 document.fonts.ready.then(() => {
   setTimeout(() => {
@@ -416,7 +418,6 @@ function updateActiveLink() {
     locomotiveScroll();
     numberAnimation();
     cardsAnimation();
-    
     videoPopup();
     // updateActiveLink();
     commonFunctions();
