@@ -76,7 +76,7 @@ function burgerMenu(){
   });
 }
 function locomotiveScroll(){
-         window.locomotiveScroll = new LocomotiveScroll({
+         window.locomotive_scroll = new LocomotiveScroll({
     lenisOptions: {
         wrapper: window,
         content: document.documentElement,
@@ -254,13 +254,13 @@ function videoPopup(){
     videoPopup.querySelector('iframe').src = "";
     videoPopup.classList.remove('is-show');
     
-    window.locomotiveScroll.start();
+    window.locomotive_scroll.start();
   });
   videoPopupClose.addEventListener('click', () => {
     videoPopup.querySelector('iframe').src = "";
     videoPopup.classList.remove('is-show');
     
-    window.locomotiveScroll.start();
+    window.locomotive_scroll.start();
   });
   document.querySelectorAll('[data-video]').forEach((el) => {
     let youtubeUrl = el.dataset.video;
@@ -268,7 +268,7 @@ function videoPopup(){
       videoPopup.querySelector('iframe').src = youtubeUrl;
         videoPopup.classList.add('is-show');
       
-      window.locomotiveScroll.stop();
+      window.locomotive_scroll.stop();
     });
   });
 }
@@ -421,8 +421,8 @@ function updateActiveLink() {
   });
   function beforePageChange(){
     document.body.classList.remove("is-loaded");
-    if (window.locomotiveScroll) {
-            window.locomotiveScroll.destroy();
+    if (window.locomotive_scroll) {
+            window.locomotive_scroll.destroy();
         }
   const nav = document.querySelector('.mobile-menu');
   const body = document.body;
