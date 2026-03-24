@@ -338,6 +338,18 @@ function closeLoader() {
     }
   }, "-=0.2");
 }
+function commonFunctions(){
+    document.querySelectorAll("[href='#submit']").forEach((btn)=>{
+  btn.addEventListener("click",(e)=>{
+    e.preventDefault();
+    let nextButton = btn.nextElementSibling;
+    if(nextButton){
+      nextButton.removeAttribute("disabled");
+      nextButton.click();
+    }
+  })
+ })
+}
 document.fonts.ready.then(() => {
   setTimeout(() => {
     splitText();
@@ -359,6 +371,7 @@ document.fonts.ready.then(() => {
     
     videoPopup();
     loaderAnimation();
+    commonFunctions();
     setTimeout(() => {
       closeLoader();
     }, 2000);
@@ -404,6 +417,7 @@ function updateActiveLink() {
     
     videoPopup();
     updateActiveLink();
+    commonFunctions();
   });
   function beforePageChange(){
     document.body.classList.remove("is-loaded");
@@ -426,10 +440,7 @@ function updateActiveLink() {
 
   swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
-    getProductData();
-    initLenis()
-        // FsAttributes.destroy()
-        // FsAttributes.cmsfilter.init();
+    locomotiveScroll()
         if (window.FinsweetAttributes) {
           window.FinsweetAttributes.destroy();
           window.FinsweetAttributes.modules.list.restart()
