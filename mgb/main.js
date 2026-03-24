@@ -147,7 +147,7 @@ window.addEventListener("scroll", function () {
     });
   }
   function splitText(){
-    const targets = [...document.querySelectorAll("[data-animation='heading'],[data-animation='slider_heading']")];
+    const targets = [...document.querySelectorAll("[data-animation='heading']")];
     targets.forEach(function (el) {
       const split = new SplitText(el, { type: "lines" ,wordsClass: "word",linesClass: "line"});
       split.lines.forEach((line,index) => {
