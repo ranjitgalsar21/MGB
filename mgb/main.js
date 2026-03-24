@@ -364,3 +364,83 @@ document.fonts.ready.then(() => {
     }, 2000);
   }
 document.addEventListener('DOMContentLoaded', onLoad);
+
+const swup = new Swup({
+  containers: ["main"],
+  ignoreVisit: (url, { el } = {}) => el?.closest('[href="#"], [href="#reset_form"],[href="#submit"],[data-no-swup]'),
+  linkSelector: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup]),a[data-ms-code-lang-select]',
+  animateHistoryBrowsing: true,
+  cache: true,
+
+  plugins: [new SwupPreloadPlugin()]
+});
+
+function updateActiveLink() {
+    const currentPath = window.location.pathname; 
+    const navLinks = document.querySelectorAll('a');
+
+    navLinks.forEach(link => {
+        link.classList.remove('w--current');
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('w--current');
+        }
+    });
+}
+
+  swup.hooks.on("page:view", () => {
+    window.scrollTo(0, 0);
+    splitText();
+    initHighlightText();
+     setDelays();
+    splideSlider();
+    splideSliderMobile();
+    accordion();
+    burgerMenu();
+    
+    locomotiveScroll();
+    numberAnimation();
+    footerAnimation();
+    cardsAnimation();
+    
+    videoPopup();
+    updateActiveLink();
+  });
+  function beforePageChange(){
+    document.body.classList.remove("is-loaded");
+    if (window.locomotiveScroll) {
+            window.locomotiveScroll.destroy();
+        }
+  const nav = document.querySelector('.mobile-menu');
+  const body = document.body;
+    nav.classList.remove('is-show');
+    body.classList.remove('no-scroll');
+        
+    
+  }
+  swup.hooks.replace('animation:out:await', async () => {
+    beforePageChange();
+    await new Promise(resolve => setTimeout(resolve, 200));
+    return true;
+
+  });
+
+  swup.hooks.replace('animation:in:await', async () => {
+    window.scrollTo(0, 0);
+    getProductData();
+    initLenis()
+        // FsAttributes.destroy()
+        // FsAttributes.cmsfilter.init();
+        if (window.FinsweetAttributes) {
+          window.FinsweetAttributes.destroy();
+          window.FinsweetAttributes.modules.list.restart()
+        }
+        Webflow.ready();
+    await new Promise(resolve => setTimeout(resolve, 200));
+    document.body.classList.add("is-loaded");
+    const videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+      video.load();
+      video.play();
+    });
+    return true;
+  });
