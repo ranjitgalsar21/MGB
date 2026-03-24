@@ -425,8 +425,8 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-   window.Webflow && window.Webflow.destroy();
-    window.Webflow && window.Webflow.ready();
+   Webflow.destroy();     // important
+        Webflow.init();
     
   });
   function beforePageChange(){
@@ -451,8 +451,6 @@ function updateActiveLink() {
   swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
     locomotiveScroll()
-       window.Webflow && window.Webflow.destroy();
-    window.Webflow && window.Webflow.ready();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
     const videos = document.querySelectorAll("video");
