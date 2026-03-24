@@ -426,8 +426,7 @@ function updateActiveLink() {
     commonFunctions();
     footerAnimation();
    window.Webflow && window.Webflow.destroy();
-  window.Webflow && window.Webflow.ready();
-  window.Webflow && window.Webflow.require('forms').ready();
+    window.Webflow && window.Webflow.ready();
     
   });
   function beforePageChange(){
@@ -452,7 +451,6 @@ function updateActiveLink() {
   swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
     locomotiveScroll()
-        Webflow.ready();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
     const videos = document.querySelectorAll("video");
