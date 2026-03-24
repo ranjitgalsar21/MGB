@@ -461,9 +461,9 @@ function updateActiveLink() {
     return true;
   });
 
-  swup.hooks.on('content:replace', () => {
+  swup.hooks.on('content:replace', (x) => {
     if (!window.Webflow) return;
-
+console.log(x)
     // Fix page ID (critical)
     const newPage = document.querySelector('[data-wf-page]');
     if (newPage) {
