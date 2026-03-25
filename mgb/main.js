@@ -352,6 +352,8 @@ function commonFunctions(){
     }
   })
  })
+ let dvh = window.innerHeight;
+ document.documentElement.style.setProperty('--dvh', `${dvh}px`);
 }
 
 function releaseGoldSteps(){
@@ -474,6 +476,7 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
+    releaseGoldSteps();
     Webflow.ready();
 
     // Rebind forms
