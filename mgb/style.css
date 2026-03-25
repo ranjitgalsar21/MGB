@@ -471,7 +471,7 @@ span.numberChars-wrap {
 [data-wf--button--variant]:hover .btn-text-wrap div{
     transform: translateY(-1.03em);
 }
-[data-wf--button--variant="bordered"] .call-icon,[data-wf--button--variant="white"] .call-icon{
+[data-wf--button--variant="bordered"] .call-icon,[data-wf--button--variant="white-bg"] .call-icon{
         color: var(--_colors---yellow);
         background-color: var(--_colors---yellow);
 }
