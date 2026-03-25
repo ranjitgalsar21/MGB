@@ -249,7 +249,7 @@ span.numberChars-wrap {
     overflow: hidden;
 }
 .is-loaded .stat-number.is-inview .numberChars{
-    transform: translateY(calc(var(--char) * -1 + 1.05em));
+    transform: translateY(calc(var(--char) * -1 + 1.06em));
     transition: transform 1.2s ease ;
 }
 [data-slider-fadein]{
