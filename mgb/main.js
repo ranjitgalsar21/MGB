@@ -391,6 +391,26 @@ stepSections.forEach((sec, i) => {
   });
 
 }
+function sliderReview(){
+  const slider = document.querySelector('.google-reviews .splide');
+  if(!slider) return;
+  new Splide( slider, {
+    type   : 'loop',
+    perPage: 2,
+    perMove: 1,
+    autoplay: true,
+    interval: 3000,
+    pauseOnHover: true,
+    pagination: true,
+    arrows: false,
+    gap: '2em',
+    breakpoints: {
+      999: {
+        perPage: 1
+      }
+    }
+  } ).mount();
+}
 
 document.fonts.ready.then(() => {
   setTimeout(() => {
@@ -415,6 +435,7 @@ document.fonts.ready.then(() => {
     loaderAnimation();
     commonFunctions();
     releaseGoldSteps();
+    sliderReview();
     setTimeout(() => {
       closeLoader();
       headerToggle();
@@ -477,6 +498,7 @@ function updateActiveLink() {
     commonFunctions();
     footerAnimation();
     releaseGoldSteps();
+    sliderReview();
     Webflow.ready();
 
     // Rebind forms

@@ -445,6 +445,14 @@ span.numberChars-wrap {
         min-width: 8px;
 }
 }
+.google-reviews .splide__pagination{
+    position: static;
+    margin-top: 3.5em;
+}
+.google-reviews .splide__pagination__page.is-active{
+    background-color: var(--_colors---black) !important;
+    transform: none;
+}
 @media (pointer: fine) {
     [data-wf--button--variant]{
         will-change: background-color;
