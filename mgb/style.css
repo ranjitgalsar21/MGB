@@ -428,6 +428,16 @@ span.numberChars-wrap {
     pointer-events: none;
     touch-action: none;
 }
+@media screen and (max-width:550px) {
+    .release-gold-step-content-wrap ul{
+            gap: 1em;
+    margin-bottom: 1em;
+    }
+    .release-gold-step-title h2 {
+    line-height: 1.3;
+    font-size: 18px;
+}
+}
 @media (pointer: fine) {
     [data-wf--button--variant]{
         will-change: background-color;
