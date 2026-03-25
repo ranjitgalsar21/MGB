@@ -352,9 +352,44 @@ function commonFunctions(){
     }
   })
  })
-
- 
 }
+
+function releaseGoldSteps(){
+  const section = document.querySelector('.process-release-gold');
+  if(!section) return;
+  const stepHeaders = section.querySelectorAll('.release-gold-step');
+  const stepSections = section.querySelectorAll('.release-gold-step-wrap');
+  let tl = gsap.timeline({
+            scrollTrigger: {
+              scrub: true,
+              trigger: ".release-gold-steps", 
+              start: "top-=10% top",
+              end: "bottom bottom"
+            }
+      })
+stepSections.forEach((sec, i) => {
+  ScrollTrigger.create({
+    trigger: sec,
+    start: "top+=10% center",
+    end: "bottom center",
+
+    onEnter: () => {
+      stepHeaders[i].classList.add("is-active");
+      sec.classList.add("is-active");
+    },
+
+    onLeaveBack: () => {
+      stepHeaders[i].classList.remove("is-active");
+      sec.classList.remove("is-active");
+    }
+  });
+});
+  window.addEventListener("scroll", () => {
+    section.style.setProperty("--scroll", tl.scrollTrigger.progress);
+  });
+
+}
+
 document.fonts.ready.then(() => {
   setTimeout(() => {
     splitText();
@@ -377,6 +412,7 @@ document.fonts.ready.then(() => {
     videoPopup();
     loaderAnimation();
     commonFunctions();
+    releaseGoldSteps();
     setTimeout(() => {
       closeLoader();
       headerToggle();
