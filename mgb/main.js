@@ -191,6 +191,7 @@ window.addEventListener("scroll", function () {
         numberHtml += "</span>";
       });
       let space = "";
+      unit = unit.trim();
       if(unit.length > 1){
         space = "&nbsp;";
       }
@@ -387,7 +388,10 @@ stepSections.forEach((sec, i) => {
   });
 });
   window.addEventListener("scroll", () => {
-    section.style.setProperty("--scroll", tl.scrollTrigger.progress);
+    if(tl.scrollTrigger){
+section.style.setProperty("--scroll", tl.scrollTrigger.progress);
+    }
+    
   });
 
 }
@@ -490,17 +494,17 @@ function updateActiveLink() {
     splideSliderMobile();
     accordion();
     
-    locomotiveScroll();
+
     numberAnimation();
     cardsAnimation();
     videoPopup();
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-    releaseGoldSteps();
+    
     sliderReview();
     Webflow.ready();
-
+    
     // Rebind forms
     const forms = window.Webflow.require && window.Webflow.require('forms');
     if (forms) {
@@ -529,7 +533,9 @@ function updateActiveLink() {
 
   swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
-    locomotiveScroll()
+    locomotiveScroll();
+    releaseGoldSteps();
+    window.locomotive_scroll.resize();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
     const videos = document.querySelectorAll("video");

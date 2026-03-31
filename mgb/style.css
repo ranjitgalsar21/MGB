@@ -427,6 +427,18 @@ span.numberChars-wrap {
     pointer-events: none;
     touch-action: none;
 }
+.disclaimer{
+        margin-top: 5em;
+    padding: 3em;
+    background: var(--_colors---gray-f5f5f5);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.disclaimer p{
+max-width: 60em;
+}
 @media screen and (max-width:550px) {
     .release-gold-step-content-wrap ul{
             gap: 1em;
@@ -605,15 +617,6 @@ overflow: hidden;
 }
 .footer-link:hover > *{
     transform: translateY(-1em);
-}
-.footer-link > *::after {
-    content: " ]";
-    color: transparent;
-}
-
-.footer-link > *::before {
-    content: "[ ";
-    color: transparent;
 }
 a.footer-social-link::after {
     background: var(--_colors---yellow);
