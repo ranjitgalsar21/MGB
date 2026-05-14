@@ -85,6 +85,7 @@ function locomotiveScroll(){
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smoothWheel: true,
+        autoResize: true,
         smoothTouch: false,
         wheelMultiplier: 1,
         touchMultiplier: 2,
