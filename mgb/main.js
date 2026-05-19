@@ -387,9 +387,9 @@ function initStickyStepsBasic() {
 }
 
 // Initialize Sticky Steps (Basic)
-// document.addEventListener('DOMContentLoaded', function () {
-//   initStickyStepsBasic();
-// });
+document.addEventListener('DOMContentLoaded', function () {
+  initStickyStepsBasic();
+});
 function commonFunctions(){
     document.querySelectorAll("[href='#submit']").forEach((btn)=>{
   btn.addEventListener("click",(e)=>{
