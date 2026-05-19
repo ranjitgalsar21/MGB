@@ -341,41 +341,41 @@ function closeLoader() {
     }
   }, "-=0.2");
 }
-function mobileStickyForm() {
-  if (window.innerWidth > 991) return;
+// function mobileStickyForm() {
+//   if (window.innerWidth > 991) return;
 
-  const toggleBtn = document.querySelector(".mobile-toggle-btn");
-  const form = document.querySelector(".sticky-contact-form");
-  const wrapper = document.querySelector(".sticky_content-wrapper");
-  const buttonText = document.querySelector(".mobile-toggle-btn .sticky_txt");
-  const hideButtons = document.querySelectorAll(".hide-on-form");
+//   const toggleBtn = document.querySelector(".mobile-toggle-btn");
+//   const form = document.querySelector(".sticky-contact-form");
+//   const wrapper = document.querySelector(".sticky_content-wrapper");
+//   const buttonText = document.querySelector(".mobile-toggle-btn .sticky_txt");
+//   const hideButtons = document.querySelectorAll(".hide-on-form");
 
-  if (!toggleBtn || !form) return;
+//   if (!toggleBtn || !form) return;
 
-  // Prevent duplicate listeners
-  if (toggleBtn.dataset.bound === "true") return;
-  toggleBtn.dataset.bound = "true";
+//   // Prevent duplicate listeners
+//   if (toggleBtn.dataset.bound === "true") return;
+//   toggleBtn.dataset.bound = "true";
 
-  toggleBtn.addEventListener("click", function (e) {
-    e.preventDefault();
+//   toggleBtn.addEventListener("click", function (e) {
+//     e.preventDefault();
 
-    form.classList.toggle("is-open");
+//     form.classList.toggle("is-open");
 
-    const isOpen = form.classList.contains("is-open");
+//     const isOpen = form.classList.contains("is-open");
 
-    wrapper?.classList.toggle("form-open", isOpen);
+//     wrapper?.classList.toggle("form-open", isOpen);
 
-    hideButtons.forEach((item) => {
-      item.classList.toggle("is-hidden", isOpen);
-    });
+//     hideButtons.forEach((item) => {
+//       item.classList.toggle("is-hidden", isOpen);
+//     });
 
-    if (buttonText) {
-      buttonText.textContent = isOpen
-        ? "Back"
-        : "Request a call back";
-    }
-  });
-}
+//     if (buttonText) {
+//       buttonText.textContent = isOpen
+//         ? "Back"
+//         : "Request a call back";
+//     }
+//   });
+// }
 function initStickyStepsBasic() {
   const containers = document.querySelectorAll("[data-sticky-steps-init]");
   if (!containers.length) return;
@@ -518,7 +518,7 @@ document.fonts.ready.then(() => {
     footerAnimation();
     cardsAnimation();
     setTimeout(() => {
-  mobileStickyForm();
+  // mobileStickyForm();
   initStickyStepsBasic();
 }, 100);
     
@@ -588,7 +588,7 @@ function updateActiveLink() {
     // updateActiveLink();
     commonFunctions();
     footerAnimation();
-    mobileStickyForm();
+    // mobileStickyForm();
     
     sliderReview();
     initStickyStepsBasic();
