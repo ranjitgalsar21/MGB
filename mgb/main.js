@@ -422,9 +422,9 @@ function initStickyStepsBasic() {
 }
 
 // Initialize Sticky Steps (Basic)
-document.addEventListener('DOMContentLoaded', function () {
-  initStickyStepsBasic();
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   initStickyStepsBasic();
+// });
 function commonFunctions(){
     document.querySelectorAll("[href='#submit']").forEach((btn)=>{
   btn.addEventListener("click",(e)=>{
@@ -517,7 +517,10 @@ document.fonts.ready.then(() => {
     // heroAnimation();
     footerAnimation();
     cardsAnimation();
-    mobileStickyForm();
+    setTimeout(() => {
+  mobileStickyForm();
+  initStickyStepsBasic();
+}, 100);
     
     videoPopup();
     loaderAnimation();
