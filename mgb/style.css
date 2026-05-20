@@ -397,13 +397,14 @@ span.numberChars-wrap {
     position: relative;
     display: flex;
     gap: 0.66em;
+    font-size: 1.6em;
 }
 .release-gold-step-content-wrap ul li::before{
     content: "";
-    width:0.6666em;
-    height:0.6666em;
+    width:0.4966em;
+    height:0.4966em;
     display: block;
-    background-color: var(--_colors---yellow);
+    background-color: #0d0727;
     border-radius: 50%;
             transform: translateY(0.5em);
 }
