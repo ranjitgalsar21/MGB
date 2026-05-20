@@ -418,9 +418,9 @@ span.numberChars-wrap {
 .release-gold-process-thumb{
     transform: scaleX(var(--scroll));
 }
-.release-gold-step:nth-child(1) .release-gold-step-number{
+/* .release-gold-step:nth-child(1) .release-gold-step-number{
     background-color: var(--_colors---yellow) !important;
-}
+} */
 .release-gold-step.is-active .release-gold-step-number{
     background-color: var(--_colors---yellow) !important;
 }
