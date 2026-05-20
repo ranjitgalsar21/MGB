@@ -401,8 +401,8 @@ span.numberChars-wrap {
 }
 .release-gold-step-content-wrap ul li::before{
     content: "";
-    width:0.4966em;
-    height:0.4966em;
+    width:0.3776em;
+    height:0.3776em;
     display: block;
     background-color: #0d0727;
     border-radius: 50%;
