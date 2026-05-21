@@ -3,14 +3,14 @@ function splideSlider() {
   document.querySelectorAll('.splide_slider').forEach(slider => {
 
     const options = {
-      loop: true,
+      type: slider.dataset.type || "loop",
       perPage: parseInt(slider.dataset.perPage) || 1,
       autoplay: slider.dataset.autoplay === "true",
       interval: parseInt(slider.dataset.interval) || 3000,
       arrows: slider.dataset.arrows !== "false",
       pagination: slider.dataset.pagination !== "false",
       gap: slider.dataset.gap || "0px",
-      type:slider.dataset.type || "fade"
+      // type:slider.dataset.type || "fade"
     };
 
     new Splide(slider, options).mount();
