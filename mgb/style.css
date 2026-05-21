@@ -808,10 +808,10 @@ a.footer-social-link:hover svg path{
 }
 .sticky-contact-bar {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 4;
   
   opacity: 0;
   visibility: hidden;
