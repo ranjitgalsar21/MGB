@@ -376,68 +376,42 @@ function mobileStickyForm() {
     }
   });
 }
+let _stickyObservers = [];
+
 function initStickyContactBar() {
+  // Always clean up previous observers first
+  _stickyObservers.forEach(obs => obs.disconnect());
+  _stickyObservers = [];
+
   const stickyBar = document.querySelector(".sticky-contact-bar");
   const triggerSection = document.querySelector("section:first-of-type");
   const footer = document.querySelector("footer");
 
   if (!stickyBar || !triggerSection || !footer) return;
 
-  // Hard reset
   stickyBar.classList.remove("is-visible");
 
   let passedFirstSection = false;
   let footerVisible = false;
 
   function updateStickyState() {
-    stickyBar.classList.toggle(
-      "is-visible",
-      passedFirstSection && !footerVisible
-    );
+    stickyBar.classList.toggle("is-visible", passedFirstSection && !footerVisible);
   }
 
-  // Check immediately on page load/change
-  function checkInitialState() {
-    const triggerBottom =
-      triggerSection.getBoundingClientRect().bottom;
-
-    const footerTop =
-      footer.getBoundingClientRect().top;
-
-    passedFirstSection = triggerBottom <= 0;
-    footerVisible = footerTop <= window.innerHeight;
-
+  const sectionObserver = new IntersectionObserver(([entry]) => {
+    passedFirstSection = !entry.isIntersecting;
     updateStickyState();
-  }
+  }, { threshold: 0 });
 
-  // Initial check
-  checkInitialState();
-
-  // First section observer
-  const sectionObserver = new IntersectionObserver(
-    ([entry]) => {
-      passedFirstSection = !entry.isIntersecting;
-      updateStickyState();
-    },
-    {
-      threshold: 0
-    }
-  );
+  const footerObserver = new IntersectionObserver(([entry]) => {
+    footerVisible = entry.isIntersecting;
+    updateStickyState();
+  }, { threshold: 0 });
 
   sectionObserver.observe(triggerSection);
-
-  // Footer observer
-  const footerObserver = new IntersectionObserver(
-    ([entry]) => {
-      footerVisible = entry.isIntersecting;
-      updateStickyState();
-    },
-    {
-      threshold: 0
-    }
-  );
-
   footerObserver.observe(footer);
+
+  _stickyObservers.push(sectionObserver, footerObserver);
 }
 
 function initStickyStepsBasic() {
