@@ -376,6 +376,51 @@ function mobileStickyForm() {
     }
   });
 }
+function initStickyContactBar() {
+  const stickyBar = document.querySelector(".sticky-contact-bar");
+
+  const triggerSection = document.querySelector("section:first-of-type");
+  const footer = document.querySelector("footer");
+
+  if (!stickyBar || !triggerSection || !footer) return;
+
+  let passedFirstSection = false;
+  let footerVisible = false;
+
+  function updateStickyState() {
+    stickyBar.classList.toggle(
+      "is-visible",
+      passedFirstSection && !footerVisible
+    );
+  }
+
+  const sectionObserver = new IntersectionObserver(
+    ([entry]) => {
+      passedFirstSection = !entry.isIntersecting;
+      updateStickyState();
+    },
+    {
+      threshold: 0.1
+    }
+  );
+
+  sectionObserver.observe(triggerSection);
+
+  const footerObserver = new IntersectionObserver(
+    ([entry]) => {
+      footerVisible = entry.isIntersecting;
+      updateStickyState();
+    },
+    {
+      threshold: 0.05
+    }
+  );
+
+  footerObserver.observe(footer);
+}
+
+// Init
+document.addEventListener("DOMContentLoaded", initStickyContactBar);
 function initStickyStepsBasic() {
   const containers = document.querySelectorAll("[data-sticky-steps-init]");
   if (!containers.length) return;
@@ -521,6 +566,7 @@ document.fonts.ready.then(() => {
   mobileStickyForm();
   initStickyStepsBasic();
 }, 100);
+initStickyContactBar();
     
     videoPopup();
     loaderAnimation();
@@ -589,6 +635,7 @@ function updateActiveLink() {
     commonFunctions();
     footerAnimation();
     mobileStickyForm();
+    initStickyContactBar();
     
     sliderReview();
     initStickyStepsBasic();

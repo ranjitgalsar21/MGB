@@ -806,3 +806,24 @@ a.footer-social-link:hover svg path{
   }
 
 }
+.sticky-contact-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.sticky-contact-bar.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
