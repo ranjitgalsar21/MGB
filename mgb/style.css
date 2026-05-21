@@ -439,7 +439,7 @@ span.numberChars-wrap {
     background-color: var(--_colors---yellow) !important;
     /* animation: glowPulse 2s infinite ease-in-out; */
 }
-.release-gold-step.is-active:last-of-type .release-gold-step-number {
+.release-gold-step.is-active:not(:has(+ .release-gold-step.is-active)) .release-gold-step-number {
   background-color: var(--_colors---yellow) !important;
   animation: glowPulse 2s infinite ease-in-out;
 }
