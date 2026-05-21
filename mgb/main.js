@@ -420,8 +420,6 @@ function initStickyContactBar() {
   footerObserver.observe(footer);
 }
 
-// Init
-document.addEventListener("DOMContentLoaded", initStickyContactBar);
 function initStickyStepsBasic() {
   const containers = document.querySelectorAll("[data-sticky-steps-init]");
   if (!containers.length) return;
