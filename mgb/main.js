@@ -378,11 +378,12 @@ function mobileStickyForm() {
 }
 function initStickyContactBar() {
   const stickyBar = document.querySelector(".sticky-contact-bar");
-
   const triggerSection = document.querySelector("section:first-of-type");
   const footer = document.querySelector("footer");
 
   if (!stickyBar || !triggerSection || !footer) return;
+
+  // Hard reset
   stickyBar.classList.remove("is-visible");
 
   let passedFirstSection = false;
@@ -395,25 +396,44 @@ function initStickyContactBar() {
     );
   }
 
+  // Check immediately on page load/change
+  function checkInitialState() {
+    const triggerBottom =
+      triggerSection.getBoundingClientRect().bottom;
+
+    const footerTop =
+      footer.getBoundingClientRect().top;
+
+    passedFirstSection = triggerBottom <= 0;
+    footerVisible = footerTop <= window.innerHeight;
+
+    updateStickyState();
+  }
+
+  // Initial check
+  checkInitialState();
+
+  // First section observer
   const sectionObserver = new IntersectionObserver(
     ([entry]) => {
       passedFirstSection = !entry.isIntersecting;
       updateStickyState();
     },
     {
-      threshold: 0.1
+      threshold: 0
     }
   );
 
   sectionObserver.observe(triggerSection);
 
+  // Footer observer
   const footerObserver = new IntersectionObserver(
     ([entry]) => {
       footerVisible = entry.isIntersecting;
       updateStickyState();
     },
     {
-      threshold: 0.05
+      threshold: 0
     }
   );
 
