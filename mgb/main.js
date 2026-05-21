@@ -10,7 +10,7 @@ function splideSlider() {
       arrows: slider.dataset.arrows !== "false",
       pagination: slider.dataset.pagination !== "false",
       gap: slider.dataset.gap || "0px",
-      type:"fade"
+      type:slider.dataset.type || "fade"
     };
 
     new Splide(slider, options).mount();
