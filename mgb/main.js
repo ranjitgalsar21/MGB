@@ -1,6 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 function splideSlider() {
   document.querySelectorAll('.splide_slider').forEach(slider => {
+    const isFade = slider.dataset.type === "fade";
 
     const options = {
       type: isFade ? "fade" : "loop",  
