@@ -383,6 +383,7 @@ function initStickyContactBar() {
   const footer = document.querySelector("footer");
 
   if (!stickyBar || !triggerSection || !footer) return;
+  stickyBar.classList.remove("is-visible");
 
   let passedFirstSection = false;
   let footerVisible = false;
