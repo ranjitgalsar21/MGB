@@ -3,7 +3,7 @@ function splideSlider() {
   document.querySelectorAll('.splide_slider').forEach(slider => {
 
     const options = {
-      type: slider.dataset.type || "loop",
+      loop: slider.dataset.loop || "true",
       perPage: parseInt(slider.dataset.perPage) || 1,
       autoplay: slider.dataset.autoplay === "true",
       interval: parseInt(slider.dataset.interval) || 3000,
