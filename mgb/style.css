@@ -827,3 +827,10 @@ a.footer-social-link:hover svg path{
   visibility: visible;
   transform: translateY(0);
 }
+.faq-item.active.is-open .faq-question {
+    background: var(--_colors---yellow);
+    border-radius: var(--_space---radius-16) var(--_space---radius-16) 0 0;
+}
+.faq-item.active.is-open .faq-question .faq-icon {
+    background-color: white;
+}
