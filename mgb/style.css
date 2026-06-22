@@ -596,10 +596,10 @@ overflow: hidden;
 }
 .nav-link > *{
     transition: 0.3s ease;
-    text-shadow: 0 1em var(--_colors---black);
+    text-shadow: 0 1.3em var(--_colors---black);
 }   
 .nav-link:hover > *{
-    transform: translateY(-1em);
+    transform: translateY(-1.3em);
 }
 .nav-link:hover {
     color: transparent;
