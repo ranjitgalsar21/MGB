@@ -684,3 +684,32 @@ function updateActiveLink() {
     Webflow.ready();
 });
 
+function observeElement(selector, callback) {
+    const element = document.querySelector(selector);
+
+    if (!element) return;
+
+    const observer = new MutationObserver(() => {
+        const isVisible = getComputedStyle(element).display !== 'none';
+
+        if (isVisible) {
+            callback(element, observer);
+        }
+    });
+
+    observer.observe(element, {
+        attributes: true,
+        attributeFilter: ['style', 'class']
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    observeElement('.w-form-done', (element, observer) => {
+        setTimeout(() => {
+            location.reload();
+        }, 10000);
+
+        observer.disconnect();
+    });
+});
+
