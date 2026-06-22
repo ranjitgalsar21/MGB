@@ -712,4 +712,13 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.disconnect();
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    observeElement('.w-form-fail', (element, observer) => {
+        setTimeout(() => {
+            location.reload();
+        }, 10000);
+
+        observer.disconnect();
+    });
+});
 
