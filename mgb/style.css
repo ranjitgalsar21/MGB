@@ -485,6 +485,43 @@ max-width: 60em;
     background-color: var(--_colors---black) !important;
     transform: none;
 }
+ [data-wf--button--variant]{
+        will-change: background-color;
+        transition: 0.3s ease;
+        border: 1px solid transparent;
+    }
+    [data-wf--button--variant="bordered"]{
+        border: 1px solid #12121280;
+    }
+    [data-wf--button--variant] .call-icon{
+        transition: 0.3s ease;
+    }
+     .btn-text-wrap{
+        overflow: hidden;
+    }
+    .btn-text-wrap div{
+    text-shadow: 0 1em var(--_colors---black);
+    transition: 0.3s ease;
+}
+[data-wf--button--variant="bordered"] .call-icon,[data-wf--button--variant="white-bg"] .call-icon{
+        color: var(--_colors---yellow);
+        background-color: var(--_colors---yellow);
+}
+ .btn-arrow-wrap:first-child {
+    transform: translateX(-100%);
+}
+.btn-arrow-wrap{
+    transition: 0.3s ease;
+}
+.btn-arrow-wrap:first-child svg{
+    transform: scale(0);
+    transition: 0.3s ease;
+}
+.btn-arrow-wrap:last-child svg{
+    transform: scale(1);
+    transition: 0.3s ease;
+}
+   
 @media (pointer: fine) {
     [data-wf--button--variant]{
         will-change: background-color;
