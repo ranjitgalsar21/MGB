@@ -345,6 +345,25 @@ function closeLoader() {
     }
   }, "-=0.2");
 }
+function formReload() {
+
+    observeElement('.w-form-done', (element, observer) => {
+        setTimeout(() => {
+            location.reload();
+        }, 10000);
+
+        observer.disconnect();
+    });
+
+    observeElement('.w-form-fail', (element, observer) => {
+        setTimeout(() => {
+            location.reload();
+        }, 10000);
+
+        observer.disconnect();
+    });
+
+}
 function mobileStickyForm() {
   if (window.innerWidth > 991) return;
 
@@ -564,6 +583,7 @@ document.fonts.ready.then(() => {
   initStickyStepsBasic();
 }, 100);
 initStickyContactBar();
+formReload();
     
     videoPopup();
     loaderAnimation();
@@ -623,6 +643,7 @@ function updateActiveLink() {
     initHighlightText();
     splideSliderMobile();
     accordion();
+    formReload();
     
 
     numberAnimation();
@@ -703,22 +724,5 @@ function observeElement(selector, callback) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    observeElement('.w-form-done', (element, observer) => {
-        setTimeout(() => {
-            location.reload();
-        }, 10000);
 
-        observer.disconnect();
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    observeElement('.w-form-fail', (element, observer) => {
-        setTimeout(() => {
-            location.reload();
-        }, 10000);
-
-        observer.disconnect();
-    });
-});
 
