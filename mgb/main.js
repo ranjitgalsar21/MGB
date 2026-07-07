@@ -347,21 +347,37 @@ function closeLoader() {
 }
 function formReload() {
 
-    observeElement('.w-form-done', (element, observer) => {
-        setTimeout(() => {
-            location.reload();
-        }, 10000);
+    
+const formWrapper = document.querySelector(".sticky-contact-form");
+  const form = formWrapper.querySelector("form");
+  const success = formWrapper.querySelector(".w-form-done");
+  const error = formWrapper.querySelector(".w-form-fail");
 
-        observer.disconnect();
+  function resetWebflowForm() {
+    form.reset();
+
+    form.style.display = "flex";
+    success.style.display = "none";
+    error.style.display = "none";
+  }
+
+  function watch(element) {
+    if (!element) return;
+
+    const observer = new MutationObserver(() => {
+      if (window.getComputedStyle(element).display !== "none") {
+        setTimeout(resetWebflowForm, 5000); // Reset after 2 seconds
+      }
     });
 
-    observeElement('.w-form-fail', (element, observer) => {
-        setTimeout(() => {
-            location.reload();
-        }, 10000);
-
-        observer.disconnect();
+    observer.observe(element, {
+      attributes: true,
+      attributeFilter: ["style", "class"]
     });
+  }
+
+  watch(success);
+  watch(error);
 
 }
 function mobileStickyForm() {
