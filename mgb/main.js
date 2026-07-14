@@ -60,7 +60,7 @@ function accordion(){
           item.classList.add('is-open');
         }
         setTimeout(() => {
-          window.locomotive_scroll.resize();
+          window.dispatchEvent(new Event("resize"));
         }, 500);
       });
     });
