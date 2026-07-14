@@ -59,6 +59,9 @@ function accordion(){
         if (!isOpen) {
           item.classList.add('is-open');
         }
+        setTimeout(() => {
+          window.locomotive_scroll.resize();
+        }, 500);
       });
     });
   });
