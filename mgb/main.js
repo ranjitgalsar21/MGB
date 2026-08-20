@@ -630,8 +630,10 @@ function formReset() {
 
     const observer = new MutationObserver(() => {
       if (getComputedStyle(done).display !== "none") {
+        // Reset form
         form.reset();
 
+        // Re-enable submit button
         const submitBtn = form.querySelector(".form-submit-button");
 
         if (submitBtn) {
@@ -642,6 +644,20 @@ function formReset() {
             input.disabled = false;
           }
         }
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          done.style.display = "none";
+          if (submitBtn) {
+          submitBtn.disabled = false;
+
+          const input = submitBtn.querySelector("input");
+          if (input) {
+            input.disabled = false;
+          }
+        }
+
+        }, 5000);
 
         observer.disconnect();
       }
