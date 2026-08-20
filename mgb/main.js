@@ -748,7 +748,7 @@ swup.hooks.on("page:view", (x) => {
         forms.ready();
     }
 
-    initTurnstile();
+    // initTurnstile();
 
 });
 
