@@ -632,6 +632,10 @@ document.addEventListener("submit", function (e) {
 
     if (done && getComputedStyle(done).display !== "none") {
       form.reset();
+      let submitBtn = form.querySelector(".form-submit-button");
+      if(submitBtn){
+        submitBtn.querySelector("input").disabled = false;
+      }
     }
   }, 500);
 });
