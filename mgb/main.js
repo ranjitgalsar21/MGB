@@ -762,6 +762,7 @@ swup.hooks.on("page:view", (x) => {
     sliderReview();
     initStickyStepsBasic();
     Webflow.ready();
+    formReset();
 
     // Rebind forms
     const forms = window.Webflow.require && window.Webflow.require('forms');
