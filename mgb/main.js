@@ -748,6 +748,8 @@ swup.hooks.on("page:view", (x) => {
         forms.ready();
     }
 
+    initTurnstile();
+
 });
 
 function beforePageChange() {
@@ -773,7 +775,7 @@ swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
     locomotiveScroll();
     releaseGoldSteps();
-    initTurnstile();
+    
     window.locomotive_scroll.resize();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
