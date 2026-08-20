@@ -686,6 +686,10 @@ function initTurnstile(){
 
   if (!container) return;
 
+  const submitBtn = form.querySelector(".form-submit-button");
+  if(submitBtn){
+    submitBtn.querySelector("input").disabled = false;
+  }
   // Remove any previous widget
   container.innerHTML = "";
 
