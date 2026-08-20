@@ -692,6 +692,7 @@ function initTurnstile(){
   }
   // Remove any previous widget
   container.innerHTML = "";
+  container.nextSibling.remove();
 
   turnstile.render(container, {
     sitekey: form.dataset.turnstileSitekey
