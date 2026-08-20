@@ -680,7 +680,20 @@ function updateActiveLink() {
         }
     });
 }
+function initTurnstile(){
+  document.querySelectorAll("form[data-turnstile-sitekey]").forEach(form => {
+  const container = form.querySelector(".cf-turnstile");
 
+  if (!container) return;
+
+  // Remove any previous widget
+  container.innerHTML = "";
+
+  turnstile.render(container, {
+    sitekey: form.dataset.turnstileSitekey
+  });
+});
+}
 swup.hooks.on("page:view", (x) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(x.to.html, 'text/html');
@@ -747,6 +760,7 @@ swup.hooks.replace('animation:in:await', async () => {
     window.scrollTo(0, 0);
     locomotiveScroll();
     releaseGoldSteps();
+    initTurnstile();
     window.locomotive_scroll.resize();
     await new Promise(resolve => setTimeout(resolve, 200));
     document.body.classList.add("is-loaded");
