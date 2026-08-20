@@ -685,12 +685,14 @@ function initTurnstile(){
   const container = form.querySelector(".cf-turnstile");
 
   if (!container) return;
+  let sibling = container.nextElementSibling;
 
-  let container2 = form.querySelector(".cf-turnstile-x");
-    if (container2){
-      container2.innerHTML = "";
-      container2.nextSibling.remove();
-    };
+while (sibling) {
+  const next = sibling.nextElementSibling;
+  sibling.remove();
+  sibling = next;
+}
+
 
   const submitBtn = form.querySelector(".form-submit-button");
   if(submitBtn){
