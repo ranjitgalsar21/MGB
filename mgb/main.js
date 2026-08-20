@@ -621,24 +621,37 @@ document.fonts.ready.then(() => {
     }, 200);
 });
 
-function formReset(){
-document.addEventListener("submit", function (e) {
-  const form = e.target;
+function formReset() {
+  document.querySelectorAll(".w-form").forEach((wrapper) => {
+    const form = wrapper.querySelector("form");
+    const done = wrapper.querySelector(".w-form-done");
 
-  if (!form.matches("form")) return;
+    if (!form || !done) return;
 
-  setTimeout(() => {
-    const done = form.parentElement.querySelector(".w-form-done");
+    const observer = new MutationObserver(() => {
+      if (getComputedStyle(done).display !== "none") {
+        form.reset();
 
-    if (done && getComputedStyle(done).display !== "none") {
-      form.reset();
-      let submitBtn = form.querySelector(".form-submit-button");
-      if(submitBtn){
-        submitBtn.querySelector("input").disabled = false;
+        const submitBtn = form.querySelector(".form-submit-button");
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+
+          const input = submitBtn.querySelector("input");
+          if (input) {
+            input.disabled = false;
+          }
+        }
+
+        observer.disconnect();
       }
-    }
-  }, 500);
-});
+    });
+
+    observer.observe(done, {
+      attributes: true,
+      attributeFilter: ["style", "class"]
+    });
+  });
 }
 
 function onLoad() {
