@@ -628,43 +628,42 @@ function formReset() {
 
     if (!form || !done) return;
 
+    let wasVisible = false;
+
     const observer = new MutationObserver(() => {
-      if (getComputedStyle(done).display !== "none") {
-        // Reset form
+      const isVisible = getComputedStyle(done).display !== "none";
+
+      // Only run when it changes from hidden → visible
+      if (isVisible && !wasVisible) {
+        wasVisible = true;
+
         form.reset();
 
-        // Re-enable submit button
         const submitBtn = form.querySelector(".form-submit-button");
 
         if (submitBtn) {
           submitBtn.disabled = false;
-
-          const input = submitBtn.querySelector("input");
-          if (input) {
-            input.disabled = false;
-          }
         }
 
-        // Hide success message after 5 seconds
         setTimeout(() => {
           done.style.display = "none";
+
           if (submitBtn) {
-          submitBtn.disabled = false;
-
-          const input = submitBtn.querySelector("input");
-          if (input) {
-            input.disabled = false;
+            submitBtn.disabled = false;
           }
-        }
 
+          wasVisible = false;
         }, 5000);
+      }
 
-        observer.disconnect();
+      if (!isVisible) {
+        wasVisible = false;
       }
     });
 
-    observer.observe(done, {
+    observer.observe(wrapper, {
       attributes: true,
+      subtree: true,
       attributeFilter: ["style", "class"]
     });
   });
