@@ -621,6 +621,22 @@ document.fonts.ready.then(() => {
     }, 200);
 });
 
+function formReset(){
+document.addEventListener("submit", function (e) {
+  const form = e.target;
+
+  if (!form.matches("form")) return;
+
+  setTimeout(() => {
+    const done = form.parentElement.querySelector(".w-form-done");
+
+    if (done && getComputedStyle(done).display !== "none") {
+      form.reset();
+    }
+  }, 500);
+});
+}
+
 function onLoad() {
     setDelays();
     splideSlider();
@@ -649,6 +665,7 @@ function onLoad() {
         closeLoader();
         headerToggle();
     }, 2000);
+    formReset();
     ScrollTrigger.normalizeScroll();
 }
 document.addEventListener('DOMContentLoaded', onLoad);
