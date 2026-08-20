@@ -639,7 +639,7 @@ function formReset() {
 
         form.reset();
 
-        const submitBtn = form.querySelector(".form-submit-button");
+        const submitBtn = form.querySelector(".form-submit-button input");
 
         if (submitBtn) {
           submitBtn.disabled = false;
